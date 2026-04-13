@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Morning Show Forum</title>
+    <meta
+      name="description"
+      content="A newsroom-inspired fan site for discussing episodes of The Morning Show."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Space+Grotesk:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="beta-mode">
+    <div class="page-shell">
+      <header class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">Broadcast Floor</p>
+          <h1>The Morning Show</h1>
+          <p class="hero-text">
+            A sleek fan-made episode hub built around media pressure, on-air
+            chaos, and the conversations that start after the cameras cut.
+          </p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#episodes">Browse episodes</a>
+            <a class="button button-secondary" href="#forum">Jump to forum</a>
+          </div>
+        </div>
+        <aside class="hero-panel">
+          <p class="panel-label">Tonight's Rundown</p>
+          <ul class="headline-list">
+            <li>Anchor drama and newsroom power shifts</li>
+            <li>Episode-by-episode discussion with local persistence</li>
+            <li>Responsive single-page layout with no backend required</li>
+          </ul>
+        </aside>
+      </header>
+
+      <main>
+        <section class="section intro-grid" aria-label="Show themes">
+          <article class="theme-card">
+            <p class="card-kicker">Theme</p>
+            <h2>Power on camera</h2>
+            <p>
+              The design leans into the tension between polished broadcast
+              surfaces and the mess behind them.
+            </p>
+          </article>
+          <article class="theme-card">
+            <p class="card-kicker">Format</p>
+            <h2>Episode-first browsing</h2>
+            <p>
+              Pick a season, open an episode, and keep each discussion thread
+              separate so the page feels structured instead of chaotic.
+            </p>
+          </article>
+          <article class="theme-card">
+            <p class="card-kicker">Forum</p>
+            <h2>Simple by design</h2>
+            <p>
+              Comments stay in the browser, making the prototype fast to run and
+              easy to extend later with a real backend.
+            </p>
+          </article>
+        </section>
+
+        <section class="section episode-section" id="episodes">
+          <div class="section-heading">
+            <p class="eyebrow">Episode Desk</p>
+            <h2>Choose a season and open the discussion</h2>
+          </div>
+
+          <div class="season-tabs" id="season-tabs" aria-label="Seasons"></div>
+
+          <div class="episode-layout">
+            <aside class="episode-list-panel">
+              <div class="list-header">
+                <h3>Episodes</h3>
+                <p id="season-summary">Season 1</p>
+              </div>
+              <div class="episode-list" id="episode-list"></div>
+            </aside>
+
+            <section class="episode-detail" aria-live="polite">
+              <p class="detail-label">Current thread</p>
+              <h3 id="episode-title">Select an episode</h3>
+              <p id="episode-meta" class="episode-meta"></p>
+              <p id="episode-blurb" class="episode-blurb"></p>
+
+              <div class="detail-highlights">
+                <div>
+                  <span class="highlight-label">Focus</span>
+                  <p id="episode-focus"></p>
+                </div>
+                <div>
+                  <span class="highlight-label">Discussion prompt</span>
+                  <p id="episode-prompt"></p>
+                </div>
+              </div>
+            </section>
+          </div>
+        </section>
+
+        <section class="section forum-section" id="forum">
+          <div class="section-heading">
+            <p class="eyebrow">After Air</p>
+            <h2>Episode forum</h2>
+          </div>
+
+          <div class="forum-layout">
+            <form class="comment-form" id="comment-form">
+              <label>
+                Name
+                <input
+                  id="comment-name"
+                  name="name"
+                  type="text"
+                  maxlength="40"
+                  placeholder="Your byline"
+                  required
+                />
+              </label>
+
+              <label>
+                Comment
+                <textarea
+                  id="comment-text"
+                  name="comment"
+                  rows="6"
+                  maxlength="500"
+                  placeholder="What stood out in this episode?"
+                  required
+                ></textarea>
+              </label>
+
+              <div class="form-footer">
+                <p id="comment-target" class="comment-target">
+                  Posting to: Season 1, Episode 1
+                </p>
+                <button class="button button-primary" type="submit">
+                  Post comment
+                </button>
+              </div>
+            </form>
+
+            <section class="comment-stream">
+              <div class="stream-header">
+                <h3>Viewer comments</h3>
+                <span id="comment-count" class="comment-count">0 posts</span>
+              </div>
+              <div id="comment-list" class="comment-list"></div>
+            </section>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,492 @@
+:root {
+  --bg: #f4efe6;
+  --bg-deep: #d7c9b0;
+  --ink: #101418;
+  --ink-soft: #44515d;
+  --card: rgba(255, 250, 241, 0.9);
+  --card-strong: #fff9ef;
+  --line: rgba(16, 20, 24, 0.12);
+  --accent: #b9322f;
+  --accent-dark: #7f201f;
+  --gold: #c79b4b;
+  --shadow: 0 24px 60px rgba(16, 20, 24, 0.12);
+  --beta-frame: #cf2f2f;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  color: var(--ink);
+  font-family: "Space Grotesk", sans-serif;
+  background:
+    radial-gradient(circle at top left, rgba(185, 50, 47, 0.16), transparent 36%),
+    radial-gradient(circle at top right, rgba(199, 155, 75, 0.22), transparent 28%),
+    linear-gradient(180deg, #f6f1e8 0%, var(--bg) 56%, #ece1d0 100%);
+}
+
+body::before {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background-image:
+    linear-gradient(rgba(16, 20, 24, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(16, 20, 24, 0.03) 1px, transparent 1px);
+  background-size: 34px 34px;
+  content: "";
+  pointer-events: none;
+}
+
+/* Fixed outer frame to keep beta-state visible across the whole site. */
+body.beta-mode::after {
+  position: fixed;
+  inset: 12px;
+  z-index: 999;
+  border: 4px solid var(--beta-frame);
+  border-radius: 22px;
+  box-shadow: 0 0 0 1px rgba(255, 248, 240, 0.65) inset;
+  content: "";
+  pointer-events: none;
+}
+
+.page-shell {
+  width: min(1180px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 32px 0 56px;
+}
+
+.hero,
+.section {
+  border: 1px solid var(--line);
+  border-radius: 28px;
+  background: var(--card);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(12px);
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: 1.8fr 1fr;
+  gap: 24px;
+  padding: 32px;
+  min-height: 420px;
+}
+
+.hero-copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.eyebrow,
+.card-kicker,
+.panel-label,
+.detail-label,
+.highlight-label {
+  margin: 0 0 12px;
+  color: var(--accent);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+  font-family: "Fraunces", serif;
+  line-height: 0.96;
+}
+
+h1 {
+  max-width: 8ch;
+  font-size: clamp(3.8rem, 10vw, 7rem);
+}
+
+h2 {
+  font-size: clamp(2rem, 5vw, 3.4rem);
+}
+
+h3 {
+  font-size: 1.55rem;
+}
+
+.hero-text,
+.theme-card p,
+.episode-blurb,
+.episode-meta,
+.detail-highlights p,
+.comment-target,
+.comment-card p,
+.stream-header,
+.list-header p {
+  color: var(--ink-soft);
+  line-height: 1.6;
+}
+
+.hero-text {
+  max-width: 52ch;
+  font-size: 1.05rem;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 28px;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 0 18px;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  font-weight: 700;
+  text-decoration: none;
+  transition:
+    transform 160ms ease,
+    background-color 160ms ease,
+    border-color 160ms ease;
+  cursor: pointer;
+}
+
+.button:hover {
+  transform: translateY(-1px);
+}
+
+.button-primary {
+  background: var(--accent);
+  color: #fff8f0;
+}
+
+.button-primary:hover {
+  background: var(--accent-dark);
+}
+
+.button-secondary {
+  border-color: var(--line);
+  color: var(--ink);
+  background: rgba(255, 255, 255, 0.42);
+}
+
+.hero-panel {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 24px;
+  border-radius: 24px;
+  color: #fff8f0;
+  background:
+    linear-gradient(180deg, rgba(16, 20, 24, 0.1), rgba(16, 20, 24, 0.4)),
+    linear-gradient(135deg, #0d1117, #253341 58%, #5a1d1d);
+}
+
+.headline-list {
+  display: grid;
+  gap: 14px;
+  padding-left: 18px;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.section {
+  margin-top: 24px;
+  padding: 28px;
+}
+
+.intro-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.theme-card,
+.episode-list-panel,
+.episode-detail,
+.comment-form,
+.comment-stream {
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  background: var(--card-strong);
+}
+
+.theme-card {
+  padding: 22px;
+}
+
+.section-heading {
+  display: grid;
+  gap: 6px;
+  margin-bottom: 22px;
+}
+
+.season-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.season-tab {
+  padding: 10px 16px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.55);
+  color: var(--ink);
+  font: inherit;
+  cursor: pointer;
+}
+
+.season-tab.active {
+  background: var(--ink);
+  color: #fff9ef;
+}
+
+.episode-layout,
+.forum-layout {
+  display: grid;
+  gap: 18px;
+  grid-template-columns: 1.05fr 1.35fr;
+}
+
+.episode-list-panel,
+.comment-form,
+.comment-stream,
+.episode-detail {
+  padding: 22px;
+}
+
+.list-header,
+.stream-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.episode-list {
+  display: grid;
+  gap: 10px;
+}
+
+.episode-card {
+  width: 100%;
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  color: inherit;
+  text-align: left;
+  background: #fff;
+  cursor: pointer;
+}
+
+.episode-card.active {
+  border-color: rgba(185, 50, 47, 0.34);
+  box-shadow: inset 0 0 0 1px rgba(185, 50, 47, 0.34);
+  background: linear-gradient(180deg, #fff9f2, #fff3e4);
+}
+
+.episode-card small {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--accent);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.episode-card strong {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 1.02rem;
+}
+
+.episode-detail {
+  display: grid;
+  align-content: start;
+  gap: 12px;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.96), rgba(250, 241, 226, 0.94)),
+    #fff9ef;
+}
+
+.episode-meta {
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+.episode-blurb {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.detail-highlights {
+  display: grid;
+  gap: 14px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-top: 10px;
+}
+
+.detail-highlights div {
+  padding: 16px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.74);
+}
+
+.detail-highlights p {
+  margin: 0;
+}
+
+.comment-form label {
+  display: grid;
+  gap: 8px;
+  margin-bottom: 16px;
+  font-weight: 500;
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 14px 16px;
+  border: 1px solid rgba(16, 20, 24, 0.15);
+  border-radius: 16px;
+  color: var(--ink);
+  font: inherit;
+  background: #fff;
+}
+
+input:focus,
+textarea:focus,
+.season-tab:focus,
+.episode-card:focus,
+.button:focus {
+  outline: 2px solid rgba(185, 50, 47, 0.3);
+  outline-offset: 2px;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 140px;
+}
+
+.form-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.comment-target {
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+.comment-count {
+  padding: 6px 10px;
+  border-radius: 999px;
+  color: var(--accent-dark);
+  font-size: 0.9rem;
+  font-weight: 700;
+  background: rgba(185, 50, 47, 0.08);
+}
+
+.comment-list {
+  display: grid;
+  gap: 12px;
+}
+
+.comment-card {
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: #fff;
+}
+
+.comment-card header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.comment-card strong {
+  font-size: 1rem;
+}
+
+.comment-card time {
+  color: var(--ink-soft);
+  font-size: 0.86rem;
+}
+
+.comment-card p {
+  margin: 0;
+}
+
+.empty-state {
+  padding: 24px;
+  border: 1px dashed rgba(16, 20, 24, 0.18);
+  border-radius: 18px;
+  color: var(--ink-soft);
+  background: rgba(255, 255, 255, 0.55);
+  text-align: center;
+}
+
+@media (max-width: 920px) {
+  .hero,
+  .episode-layout,
+  .forum-layout,
+  .intro-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .detail-highlights {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  body.beta-mode::after {
+    inset: 8px;
+    border-width: 3px;
+    border-radius: 16px;
+  }
+
+  .page-shell {
+    width: min(100% - 20px, 100%);
+    padding-top: 18px;
+    padding-bottom: 32px;
+  }
+
+  .hero,
+  .section {
+    padding: 20px;
+    border-radius: 22px;
+  }
+
+  h1 {
+    font-size: 3.2rem;
+  }
+
+  h2 {
+    font-size: 2.2rem;
+  }
+
+  .form-footer,
+  .stream-header,
+  .list-header {
+    align-items: flex-start;
+  }
+}
